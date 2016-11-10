@@ -82,8 +82,10 @@ class StateController extends Controller
           $country = country::pluck('CountryName','id');
 
 
-         return view('state.edit')->with(compact('state'))
-         ->with(compact('country'));
+         return view('state.edit')->withState($state)->
+         withCountry($country);
+
+         
     }
 
     /**
@@ -95,7 +97,10 @@ class StateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $country = country::find($id);
+       $country->update($request->all());
+
+       return redirect()->route('country.index');
     }
 
     /**
