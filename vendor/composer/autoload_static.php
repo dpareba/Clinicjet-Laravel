@@ -16,6 +16,7 @@ class ComposerStaticInit5f0a539735d1c3093d6a31c26a561e06
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -86,6 +87,7 @@ class ComposerStaticInit5f0a539735d1c3093d6a31c26a561e06
         ),
         'C' => 
         array (
+            'Collective\\Html\\' => 16,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
@@ -226,6 +228,10 @@ class ComposerStaticInit5f0a539735d1c3093d6a31c26a561e06
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
         'ClassPreloader\\' => 
         array (
             0 => __DIR__ . '/..' . '/classpreloader/classpreloader/src',
@@ -289,9 +295,11 @@ class ComposerStaticInit5f0a539735d1c3093d6a31c26a561e06
         'CreateChatterCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_29_171118_create_chatter_categories_table.php',
         'CreateChatterDiscussionTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_29_171118_create_chatter_discussion_table.php',
         'CreateChatterPostTable' => __DIR__ . '/../..' . '/database/migrations/2016_07_29_171118_create_chatter_post_table.php',
+        'CreateCountriesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_08_122531_create_countries_table.php',
         'CreateForeignKeys' => __DIR__ . '/../..' . '/database/migrations/2016_07_29_171128_create_foreign_keys.php',
         'CreatePasskeysTable' => __DIR__ . '/../..' . '/database/migrations/2016_10_22_060758_create_passkeys_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateStatesTable' => __DIR__ . '/../..' . '/database/migrations/2016_11_10_093831_create_states_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',

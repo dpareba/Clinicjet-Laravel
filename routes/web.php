@@ -20,3 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('/patients','PatientController');
+
+Route::resource('country','Admin\CountryController');
+
+Route::resource('state','Admin\StateController');
