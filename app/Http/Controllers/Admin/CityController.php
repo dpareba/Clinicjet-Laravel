@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\AdminModel\City;
+use App\AdminModel\State;
+use App\AdminModel\Country;
 
 class CityController extends Controller
 {
@@ -16,6 +19,8 @@ class CityController extends Controller
      */
     public function index()
     {
+        $cityname = City::all();
+        return view('city.index',['cityname'=>$cityname]);
         //
     }
 
@@ -26,6 +31,10 @@ class CityController extends Controller
      */
     public function create()
     {
+        $country = Country::all();
+        $state = State::all();
+
+        return view('city.create',['country'=>$country,'state'=>$state]);
         //
     }
 
@@ -37,7 +46,21 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+                'CityName' => 'required|max:1000',
+                'country_id' => 'required',
+                'state_id' => 'required'
+                ]);
+            $cityname = new City();
+            $cityname->CityName = $request['CityName'];
+            $cityname->country_id = $request['country_id'];
+            $cityname->state_id = $request['state_id'];
+            $message = "There was an error";
+            if($cityname->save())
+            {
+                $message = "State successfully added";
+            }
+            return redirect()->route('city.index');    
     }
 
     /**
@@ -59,7 +82,13 @@ class CityController extends Controller
      */
     public function edit($id)
     {
-        //
+
+          $city = City::find($id);
+          $state = State::where('country_id',$city->country_id)->get();
+          $country = Country::all();
+
+
+         return view('city.edit',['city'=>$city,'state'=>$state,'country'=>$country]);
     }
 
     /**
@@ -71,7 +100,14 @@ class CityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+                'CityName' => 'required|max:1000',
+                'country_id' => 'required',
+                'state_id' => 'required'
+                ]);
+        $city = City::find($id);
+         $city->update($request->all());
+        return redirect()->route('city.index');
     }
 
     /**

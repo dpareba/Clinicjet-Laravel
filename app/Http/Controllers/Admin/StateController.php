@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\AdminModel\state;
-use App\AdminModel\country;
+use App\AdminModel\State;
+use App\AdminModel\Country;
 
 class StateController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +19,8 @@ class StateController extends Controller
      */
     public function index()
     {
-        $StateName = state::all();
+        $StateName = State::all();
+
         //$CountryName = $StateName->states;
         //dd($CountryName);
         return view('state.index',['StateName'=>$StateName]);
@@ -32,7 +34,7 @@ class StateController extends Controller
     public function create()
     {
         
-        $country = country::pluck('CountryName','id');
+        $country = Country::all();
 
         return view('state.create',['country'=>$country]);
     }
@@ -67,7 +69,9 @@ class StateController extends Controller
      */
     public function show($id)
     {
-        //
+          $state = State::find($id);
+          $country = Country::find($state->country_id);
+         return view('state.show',['state'=>$state,'country'=>$country]);
     }
 
     /**
@@ -79,12 +83,10 @@ class StateController extends Controller
     public function edit($id)
     {
           $state = state::find($id);
-          $country = country::pluck('CountryName','id');
+          $country = country::all();
 
 
-         return view('state.edit')->withState($state)->
-         withCountry($country);
-
+         return view('state.edit',['state'=>$state,'country'=>$country]);
          
     }
 
@@ -97,10 +99,10 @@ class StateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $country = country::find($id);
-       $country->update($request->all());
 
-       return redirect()->route('country.index');
+        $state = state::find($id);
+         $state->update($request->all());
+        return redirect()->route('state.index');
     }
 
     /**
@@ -111,6 +113,8 @@ class StateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $state = State::find($id);
+        $state->delete();
+        return redirect()->route('state.index');
     }
 }

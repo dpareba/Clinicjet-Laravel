@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\AdminModel\country;
+use App\AdminModel\Country;
 class CountryController extends Controller
 {
     /**
@@ -45,10 +45,10 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-                'addcountry' => 'required|max:1000'
+                'CountryName' => 'required|max:1000'
                 ]);
             $addcountry = new country();
-            $addcountry->CountryName = $request['addcountry'];
+            $addcountry->CountryName = $request['CountryName'];
             $message = "There was an error";
             if($addcountry->save())
             {
@@ -79,8 +79,6 @@ class CountryController extends Controller
     {
 
          $country = country::find($id);
-
-
          return view('country.edit')->with('country',$country);
     }
 

@@ -4,18 +4,17 @@
 @section('content')
 @include('include.message-block')
 
-{!! Form::model($country, ['method' => 'DELETE', 'action' => ['Admin\CountryController@destroy',$country->id]]) !!}
+<form action="{{route('country.destroy',$country->id)}}" method="post">
+	{{csrf_field()}}
+	<input type="hidden" name="_method" value="DELETE">
+	<div class="form-group">
+		<label for="LableCountryName"> Country Name</label>
+		<label for="CountryName">{{$country->CountryName}}</label>
 
-    <div class="form-group">
-      {!! Form::label('LableCountryName', 'CountryName') !!}
-      {!! Form::label('CountryName', $country->CountryName, ['class' => 'form-control']) !!}
-    </div>
-
-
+	</div>
     <button class="btn btn-success" type="submit">Modify the Country!</button>
 
-  {!! Form::close() !!}
-
+</form>
 
 
   @endsection

@@ -36,7 +36,15 @@
           <ul class="treeview-menu">
             <li><a href="{{route('country.index')}}"><i class="fa fa-circle-o"></i> Country</a></li>
             <li><a href="{{route('state.index')}}"><i class="fa fa-circle-o"></i> State</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> City</a></li>
+            <li><a href="{{route('city.index')}}"><i class="fa fa-circle-o"></i> City</a></li>
+            <li><a href="{{route('bgroup.index')}}"><i class="fa fa-circle-o"></i> BloodGroup</a></li>
+            <li><a href="{{route('dosagegroup.index')}}"><i class="fa fa-circle-o"></i> DosageGroup</a></li>
+            <li><a href="{{route('dosetype.index')}}"><i class="fa fa-circle-o"></i> DoseType</a></li>
+            <li><a href="{{route('brandname.index')}}"><i class="fa fa-circle-o"></i> BrandName</a></li>
+            <li><a href="{{route('clinictype.index')}}"><i class="fa fa-circle-o"></i> ClinicType</a></li>
+            <li><a href="{{route('clinicdetail.index')}}"><i class="fa fa-circle-o"></i> ClinicDetails</a></li>
+            <li><a href="{{route('gender.index')}}"><i class="fa fa-circle-o"></i> Gender</a></li>
+
           </ul>
         </li>        
         <li class="treeview">

@@ -3,22 +3,29 @@
 
 @section('content')
 @include('include.message-block')
-{!! Form::model($country, ['route' => 'state.store']) !!}
+<form action="{{route('state.store')}}" method="post">
+  {{csrf_field()}}
+  
+  <div class="form-group">
+    <label for="countryname">Country Name</label>
+    <select name="countryid" id="countryid">
 
-    <div class="form-group">
-       {!! Form::label('countryname', 'Country Name') !!}
-       {!! Form::select('countryid', $country) !!}
+    @foreach($country as $countries)
+
+    <option value="{{$countries->id}}">{{$countries->CountryName}}</option>
+
+    @endforeach
       
-    </div>
+    </select>
 
-    <div class="form-group">
-       {!! Form::label('statename', 'StateName') !!}
-      {!! Form::text('addstate', '', ['class' => 'form-control']) !!}
-    </div>
+  </div>
+   <div>
+     <label for="statename">State Name</label>
+     <input class="form-control" type="text" name="addstate" id="addstate">
+   </div>
+   <button class="btn btn-success" type="submit"> Add the State!</button>
+</form>
 
 
-    <button class="btn btn-success" type="submit">Add the State!</button>
-
-  {!! Form::close() !!}
 
   @endsection

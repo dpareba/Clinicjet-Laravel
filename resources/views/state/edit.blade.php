@@ -4,23 +4,33 @@
 @section('content')
 @include('include.message-block')
 
-{!! Form::model($state, ['method' => 'PATCH', 'action' => ['Admin\StateController@update',$state->id]]) !!}
+<form action="{{route('state.update',$state->id)}}" method="POST">
+  {{csrf_field()}}
+  <input type="hidden" name='_method' value="PATCH">
+  <div class="form-group">
+    <label for="countryname">Country Name</label>
+    <select name="country_id" id="country_id">
 
-    <div class="form-group">
-      {!! Form::label('LableCountryName', 'Country Name') !!}
-      {!! Form::select('country_id',$country,null, ['class' => 'form-control']) !!}
-    </div>
+    @foreach($country as $countries)
+    @if($countries->id==$state->country_id)
+    <option selected value="{{$countries->id}}">{{$countries->CountryName}}</option>
+    @else
+    <option value="{{$countries->id}}">{{$countries->CountryName}}</option>
+    @endif
+    @endforeach
+      
+    </select>
+
+  </div>
+   <div>
+     <label for="statename">State Name</label>
+     <input class="form-control" type="text" name="StateName" id="StateName" value="{{$state->StateName}}">
+   </div>
+   <button class="btn btn-success" type="submit"> Add the State!</button>
+</form>
 
 
-    <div class="form-group">
-      {!! Form::label('LableStateName', 'State Name') !!}
-      {!! Form::text('StateName',null, ['class' => 'form-control']) !!}
-    </div>
 
-
-    <button class="btn btn-success" type="submit">Modify the State!</button>
-
-  {!! Form::close() !!}
 
 
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatesTable extends Migration
+class CreateBloodgroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class CreateStatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('states', function (Blueprint $table) {
+        Schema::create('bloodgroups', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('StateName');
-            $table->integer('CountryId')->unsigned();
-            
+            $table->string('BloodGroup');
         });
-        Schema::table('states', function($table) {
-            $table->foreign('CountryId')->references('id')->on('countries');
-      
-   });
-
     }
 
     /**
@@ -34,6 +27,6 @@ class CreateStatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('states');
+        Schema::dropIfExists('bloodgroups');
     }
 }
